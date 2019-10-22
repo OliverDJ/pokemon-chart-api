@@ -1,0 +1,11 @@
+version: '2'
+services:
+  pokemon-sql-server:
+    build: 
+      context: "."
+    container_name: "pokemon-container"
+    hostname: 'pokemon-server'
+    env_file:
+      - ./variables.env
+    ports:
+      - '8433:1433'
