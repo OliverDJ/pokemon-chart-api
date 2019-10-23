@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AzureFunctionsVersion>v2</AzureFunctionsVersion>
+    <FSharpCoreImplicitPackageVersion>4.2.3</FSharpCoreImplicitPackageVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Helpers\DbHelper.fs" />
+    <Compile Include="Models\PokemonTypeModels.fs" />
+    <Compile Include="Models\RelationshipModels.fs" />
+    <Compile Include="Mappers\PokemonTypeMappers.fs" />
+    <Compile Include="Mappers\RelationshipMappers.fs" />
+    <Compile Include="GetPokemonTypeApi\GetPokemonTypeApi.fs" />
+    <Content Include="GetPokemonTypeApi\function.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <!-- <PackageReference Include="FSharp.Data" Version="3.1.1" />s -->
+    <PackageReference Include="Microsoft.Extensions.Configuration.AzureKeyVault" Version="2.2.0" />
+    <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.29" />
+    <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.EventHubs" Version="3.0.6" />
+    <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.ServiceBus" Version="3.0.6" />
+    <PackageReference Include="TaskBuilder.fs" Version="2.1.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DbService\DbService.fsproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Update="FSharp.Core" Version="4.7.0" />
+  </ItemGroup>
+</Project>

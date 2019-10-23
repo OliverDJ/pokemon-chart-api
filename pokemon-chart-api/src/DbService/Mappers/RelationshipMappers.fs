@@ -6,6 +6,7 @@ namespace DbService
         open RelationshipModels
         open PokemonTypeMappers
 
+
         let mapDbRepoToDbService (m : DbRepository.Relationship) : Relationship =
             {
                 PokemonTypeA = m.TypeANavigation |> mapDbRepoToDbService
