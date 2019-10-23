@@ -1,0 +1,39 @@
+﻿{
+  "$schema": "http://json.schemastore.org/proxies",
+  "proxies": {
+    "FunctionProxy": {
+      "matchCondition": {
+        "route": "/api/{*rest}"
+
+      },
+      "backendUri": "http://%WEBSITE_HOSTNAME%/api/{rest}",
+      "responseOverrides": {
+        "response.headers.X-Frame-Options": "SAMEORIGIN",
+        "response.headers.X-XSS-Protection": "1;mode=block",
+        "response.headers.X-Content-Type-Options": "nosniff",
+        "response.headers.Referrer-Policy": "no-referrer-when-downgrade",
+        "response.headers.X-Robots-Tag": "noindex, no follow",
+        "response.headers.Cache-Control": "no-cache, no-store, must-revalidate, pre-check=0, post-check=0, max-age=0, s-maxage=0",
+        "response.headers.Pragma": "no-cache",
+        "response.headers.Expires": "0",
+        "response.headers.Feature-Policy": "vibrate 'self'; usermedia *; sync-xhr 'self'",
+        "response.headers.Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+        "response.headers.Content-Security-Policy": "src 'self'"
+      }
+    },
+    "GetPokemonType": {
+      "matchCondition": {
+        "methods": [ "GET" ],
+        "route": "/api/getPokemonType/{id}"
+      },
+      "backendUri": "http://%WEBSITE_HOSTNAME%/api/{id}"
+    },
+    "GetRelationships": {
+      "matchCondition": {
+        "methods": [ "GET" ],
+        "route": "/api/getRelationships/{id}"
+      },
+      "backendUri": "http://%WEBSITE_HOSTNAME%/api/{id}"
+    }
+  }
+}

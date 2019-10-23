@@ -1,16 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
-using System.Linq;
 namespace DbRepository
 {
-    public class PokemonTypeAccess2
+    public class PokemonTypeDbAccess
     {
         PokemonDbContext _c;
 
-        public PokemonTypeAccess2(PokemonDbContext c)
+        public PokemonTypeDbAccess(PokemonDbContext c)
         {
             this._c = c;
 

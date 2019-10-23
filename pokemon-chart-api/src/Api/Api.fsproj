@@ -6,6 +6,7 @@
     <FSharpCoreImplicitPackageVersion>4.2.3</FSharpCoreImplicitPackageVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="proxies.json" />
     <Compile Include="Helpers\DbHelper.fs" />
     <Compile Include="Models\PokemonTypeModels.fs" />
     <Compile Include="Models\RelationshipModels.fs" />
@@ -15,8 +16,11 @@
     <Content Include="GetPokemonTypeApi\function.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="GetRelationshipsApi\function.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Compile Include="GetRelationshipsApi\GetRelationshipsApi.fs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <!-- <PackageReference Include="FSharp.Data" Version="3.1.1" />s -->
     <PackageReference Include="Microsoft.Extensions.Configuration.AzureKeyVault" Version="2.2.0" />

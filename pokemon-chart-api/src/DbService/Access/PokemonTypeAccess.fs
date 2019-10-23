@@ -8,7 +8,7 @@
 
         let private _getPokemonTypeById (ctx: PokemonDbContext) id =
             task{
-                let p = PokemonTypeAccess2(ctx)
+                let p = PokemonTypeDbAccess(ctx)
                 let! qr = id |> p.getPokemonType
                 let r = qr |> mapDbRepoToDbService
                 return r

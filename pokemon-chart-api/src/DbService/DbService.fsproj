@@ -9,6 +9,7 @@
     <Compile Include="Model\RelationshipModels.fs" />
     <Compile Include="Mappers\PokemonTypeMappers.fs" />
     <Compile Include="Mappers\RelationshipMappers.fs" />
+    <Compile Include="Access\RelationshipAccess.fs" />
     <Compile Include="Access\PokemonTypeAccess.fs" />
   </ItemGroup>
   <ItemGroup>
