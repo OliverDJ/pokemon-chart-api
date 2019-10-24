@@ -5,10 +5,10 @@
       "methods": [ "get" ],
       "authLevel": "anonymous",
       "name": "req",
-      "route": "getRelationships/{id}",
+      "route": "getWeakAgainst/{id}",
       "direction": "in"
     }
   ],
   "scriptFile": "../bin/Api.dll",
-  "entryPoint": "Api.GetRelationshipsApi.run"
+  "entryPoint": "Api.GetWeakAgainstApi.run"
 }

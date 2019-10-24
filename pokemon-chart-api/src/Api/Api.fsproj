@@ -16,10 +16,26 @@
     <Content Include="GetPokemonTypeApi\function.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="GetRelationshipsApi\function.json">
+    <Content Include="GetAllRelationshipsApi\function.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Compile Include="GetRelationshipsApi\GetRelationshipsApi.fs" />
+    <Compile Include="GetAllRelationshipsApi\GetRelationshipsApi.fs" />
+    <Content Include="GetStrongAgainstApi\function.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Compile Include="GetStrongAgainstApi\GetStrongAgainst.fs" />
+    <Content Include="GetNotEffectiveAgainstApi\function.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Compile Include="GetNotEffectiveAgainstApi\GetNotEffectiveAgainst.fs" />
+    <Content Include="GetWeakAgainstApi\function.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Compile Include="GetWeakAgainstApi\GetWeakAgainst.fs" />
+    <Content Include="GetResistantAgainstApi\function.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Compile Include="GetResistantAgainstApi\GetResistantAgainst.fs" />
   </ItemGroup>
   <ItemGroup>
     <!-- <PackageReference Include="FSharp.Data" Version="3.1.1" />s -->

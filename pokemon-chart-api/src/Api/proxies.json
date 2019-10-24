@@ -20,20 +20,6 @@
         "response.headers.Strict-Transport-Security": "max-age=31536000; includeSubDomains",
         "response.headers.Content-Security-Policy": "src 'self'"
       }
-    },
-    "GetPokemonType": {
-      "matchCondition": {
-        "methods": [ "GET" ],
-        "route": "/api/getPokemonType/{id}"
-      },
-      "backendUri": "http://%WEBSITE_HOSTNAME%/api/{id}"
-    },
-    "GetRelationships": {
-      "matchCondition": {
-        "methods": [ "GET" ],
-        "route": "/api/getRelationships/{id}"
-      },
-      "backendUri": "http://%WEBSITE_HOSTNAME%/api/{id}"
     }
   }
 }
