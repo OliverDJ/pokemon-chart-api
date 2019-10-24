@@ -17,7 +17,7 @@ namespace Api
             task {
                 let con = "Server=localhost, 8433; Database=PokemonDB; User ID=SA; Password=pass123?"
                 let dbctx = con |> getDbContext
-                let! q = (dbctx(), id) ||> getWeakAgainst
+                let! q = (dbctx(), id) ||> getResistantAgainst
                 let r = q |> List.map mapDbServiceToApi
                 let ret = r |> JsonConvert.SerializeObject
                 return ret

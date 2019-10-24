@@ -61,7 +61,17 @@ namespace DbRepository
                             .ToListAsync();
             return r;
         }
-
+        public async Task<List<Relationship>> getResistantAgainst(int id)
+        {
+            var r = await
+                    _c
+                        .Relationships
+                            .Include(q => q.TypeANavigation)
+                            .Include(q => q.TypeBNavigation)
+                            .Where(q => q.TypeBNavigation.Id == id && q.Multiplier == 0.5)
+                            .ToListAsync();
+            return r;
+        }
 
     }
 }

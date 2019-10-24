@@ -24,10 +24,11 @@ namespace DbService
         let private _getStrongAgainst (dba : RelationshipDbAccess) = dba.getStrongAgainst
         let private _getNotEffectiveAgainst (dba : RelationshipDbAccess) = dba.getNotEffectiveAgainst
         let private _getWeakAgainst (dba : RelationshipDbAccess) = dba.getWeakAgainst
-        //let private _getResistantAgainst (dba : RelationshipDbAccess) = dba.getResistantAgainst
+        let private _getResistantAgainst (dba : RelationshipDbAccess) = dba.getResistantAgainst
 
         //let getAllRelationships  = _getDba >> _getAll >> _get 
         let getAllRelationships ctx = ctx |> _getDba |> _getAll |> _get 
         let getStrongAgainst ctx = ctx |> _getDba |> _getStrongAgainst |> _get
         let getNotEffectiveAgainst ctx = ctx |> _getDba |> _getNotEffectiveAgainst |> _get
         let getWeakAgainst ctx = ctx |> _getDba |> _getWeakAgainst |> _get
+        let getResistantAgainst ctx = ctx |> _getDba |> _getResistantAgainst |> _get
