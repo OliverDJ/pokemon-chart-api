@@ -12,13 +12,16 @@ namespace Api
         open DbService.RelationshipAccess
         open RelationshipMappers
         open Newtonsoft.Json
-
+        open Configuration
+        
+        let conf = getConfigModel()
+        
         let run(req: HttpRequestMessage, id : int,  log: ILogger) =
             task {
-                let con = "Server=localhost, 8433; Database=PokemonDB; User ID=SA; Password=pass123?"
+                let con = conf.ConnectionStrings.PokemonDatabase
                 let dbctx = con |> getDbContext
                 let! q = (dbctx(), id) ||> getResistantAgainst
-                let r = q |> List.map mapDbServiceToApi
+                let r = q |> List.map mapDbServiceToApi |> List.map getA
                 let ret = r |> JsonConvert.SerializeObject
                 return ret
             }

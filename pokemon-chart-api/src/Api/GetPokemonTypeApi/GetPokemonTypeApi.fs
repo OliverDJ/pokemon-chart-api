@@ -13,10 +13,13 @@ namespace Api
         open DbService.PokemonTypeAccess
         open PokemonTypeMappers
         open Newtonsoft.Json
+        open Configuration
+
+        let conf = getConfigModel()
 
         let run(req: HttpRequestMessage, id : int,  log: ILogger) =
             task {
-                let con = "Server=localhost, 8433; Database=PokemonDB; User ID=SA; Password=pass123?"
+                let con = conf.ConnectionStrings.PokemonDatabase
                 let dbctx = con |> getDbContext
                 let! q = (dbctx(), id) ||> getPokemonTypeById
                 let r = q |> mapDbServiceToApi
