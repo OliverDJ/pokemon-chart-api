@@ -1,0 +1,6 @@
+﻿{
+  "IsEncrypted": false,
+  "ConnectionStrings": {
+    "PokemonDatabase": "Server=localhost, 8433; Database=PokemonDB; User ID=SA; Password=pass123?"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "bindings": [
+    {
+      "type": "httpTrigger",
+      "methods": [ "get" ],
+      "authLevel": "anonymous",
+      "name": "req",
+      "route": "getPokemonType/{id}",
+      "direction": "in"
+    }
+  ],
+  "scriptFile": "../bin/Api.dll",
+  "entryPoint": "Api.GetPokemonTypeApi.run"
+}
