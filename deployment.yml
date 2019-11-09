@@ -12,7 +12,7 @@ spec:
   template:
     metadata:
       labels:
-        app: pokemon-sql
+        app: pokemon
     spec:
       containers:
       - name: pokemon-sql
@@ -34,5 +34,8 @@ spec:
         ports:
         - containerPort: 80
         env:
-        - name: ConnectionStrings__PokemonDatabase
-          value: Server=localhost, 1433; Database=PokemonDB; User ID=SA; Password=pass123?
+        - name: "ConnectionStrings__PokemonDatabase"
+          value: "Server=localhost, 1433; Database=PokemonDB; User ID=SA; Password=pass123?"
+
+apiVersion: apps/v1
+kind: Service

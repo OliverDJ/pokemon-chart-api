@@ -5,10 +5,10 @@
       "methods": [ "get" ],
       "authLevel": "anonymous",
       "name": "req",
-      "route": "notEffectiveAgainst/{id}",
+      "route": "relations/{id}",
       "direction": "in"
     }
   ],
   "scriptFile": "../bin/Api.dll",
-  "entryPoint": "Api.GetNotEffectiveAgainstApi.run"
+  "entryPoint": "Api.GetResistantAgainstApi.run"
 }

@@ -5,7 +5,7 @@
       "methods": [ "get" ],
       "authLevel": "anonymous",
       "name": "req",
-      "route": "getStrongAgainst/{id}",
+      "route": "strongAgainst/{id}",
       "direction": "in"
     }
   ],
