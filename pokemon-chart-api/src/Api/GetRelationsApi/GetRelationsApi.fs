@@ -23,6 +23,8 @@ namespace Api
                 NotEffective : PokemonType array
                 WeakAgainst : PokemonType array
                 ResistantAgainst : PokemonType array
+                DoesNotEffect: PokemonType array
+                ImmuneAgainst: PokemonType array
             }
 
         let conf = getConfigModel()
@@ -42,10 +44,12 @@ namespace Api
                 let dbctx = con |> getDbContext
                 let getHelper = getFunction dbctx mapDbServiceToApi
 
-                let! strong = (getResistantAgainst, getB, id) |||> getHelper
-                let! notEffective = (getResistantAgainst, getB, id) |||> getHelper
-                let! weak = (getResistantAgainst, getA, id) |||> getHelper
+                let! strong = (getStrongAgainst, getB, id) |||> getHelper
+                let! notEffective = (getNotEffectiveAgainst, getB, id) |||> getHelper
+                let! weak = (getWeakAgainst, getA, id) |||> getHelper
                 let! resistant = (getResistantAgainst, getA, id) |||> getHelper
+                let! doesNotEffect = (getDoesNotEffect, getB, id) |||> getHelper
+                let! immune = (getImmuneAgainst, getA, id) |||> getHelper
 
                 let relations =
                     {
@@ -53,6 +57,8 @@ namespace Api
                         NotEffective = notEffective
                         WeakAgainst = weak
                         ResistantAgainst = resistant
+                        DoesNotEffect = doesNotEffect
+                        ImmuneAgainst = immune
                     }
                 
                 let ret = relations |> serialize

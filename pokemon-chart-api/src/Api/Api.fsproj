@@ -21,6 +21,10 @@
     <Compile Include="Models\RelationshipModels.fs" />
     <Compile Include="Mappers\PokemonTypeMappers.fs" />
     <Compile Include="Mappers\RelationshipMappers.fs" />
+    <Compile Include="GetAllPokemonTypesApi\GetAllPokemonTypesApi.fs" />
+    <Content Include="GetAllPokemonTypesApi\function.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Compile Include="GetPokemonTypeApi\GetPokemonTypeApi.fs" />
     <Content Include="GetPokemonTypeApi\function.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -41,6 +45,14 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Compile Include="GetWeakAgainstApi\GetWeakAgainst.fs" />
+    <Compile Include="GetDoesNotEffectApi\GetDoesNotEffectApi.fs" />
+    <Content Include="GetDoesNotEffectApi\function.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Compile Include="GetImmuneAgainstApi\GetImmuneAgainstApi.fs" />
+    <Content Include="GetImmuneAgainstApi\function.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="GetResistantAgainstApi\function.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

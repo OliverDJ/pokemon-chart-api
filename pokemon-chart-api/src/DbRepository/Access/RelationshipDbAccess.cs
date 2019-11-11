@@ -73,5 +73,29 @@ namespace DbRepository
             return r;
         }
 
+        public async Task<List<Relationship>> getImmuneAgainst(int id)
+        {
+            var r = await
+                    _c
+                        .Relationships
+                            .Include(q => q.TypeANavigation)
+                            .Include(q => q.TypeBNavigation)
+                            .Where(q => q.TypeBNavigation.Id == id && q.Multiplier == 0.0)
+                            .ToListAsync();
+            return r;
+        }
+
+        public async Task<List<Relationship>> getDoesNotEffect(int id)
+        {
+            var r = await
+                    _c
+                        .Relationships
+                            .Include(q => q.TypeANavigation)
+                            .Include(q => q.TypeBNavigation)
+                            .Where(q => q.TypeANavigation.Id == id && q.Multiplier == 0.0)
+                            .ToListAsync();
+            return r;
+        }
+
     }
 }

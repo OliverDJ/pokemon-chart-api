@@ -14,5 +14,13 @@
                 return r
             }
            
+        let private _getAllPokemonTypes(ctx: PokemonDbContext)=
+            task{
+                let p = PokemonTypeDbAccess(ctx)
+                let! qr = p.getAllPokemonTypes()
+                let r = qr |> Seq.map mapDbRepoToDbService
+                return r
+            }
         let getPokemonTypeById = _getPokemonTypeById
+        let getAllPokemonTypes = _getAllPokemonTypes
 
