@@ -133,7 +133,7 @@ INSERT INTO [dbo].PokemonTypes (Name, Color) Values('Normal','#b2956b') -- 1
 INSERT INTO [dbo].PokemonTypes (Name, Color) Values('Fighting','#fc6668') -- 2
 INSERT INTO [dbo].PokemonTypes (Name, Color) Values('Flying','#818cc8') -- 3
 INSERT INTO [dbo].PokemonTypes (Name, Color) Values('Poison','#b964a0') -- 4
-INSERT INTO [dbo].PokemonTypes (Name, Color) Values('Ground','##e5b36a') -- 5
+INSERT INTO [dbo].PokemonTypes (Name, Color) Values('Ground','#e5b36a') -- 5
 INSERT INTO [dbo].PokemonTypes (Name, Color) Values('Rock','#aaa063') -- 6
 INSERT INTO [dbo].PokemonTypes (Name, Color) Values('Bug','#96ac3d') -- 7
 INSERT INTO [dbo].PokemonTypes (Name, Color) Values('Ghost','#826e98') -- 8
