@@ -1,9 +1,58 @@
 
 
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: pokemon-sql-deployment
+# spec:
+#   selector:
+#     matchLabels:
+#       app: pokemon-sql
+#   replicas: 1
+#   template:
+#     metadata:
+#       labels:
+#         app: pokemon
+#     spec:
+#       containers:
+#       - name: pokemon-sql
+#         image: oliverdj/pokemon-chart-sql:version1.0
+#         ports:
+#         - containerPort: 1433
+#         env:
+#         - name: MASTER_USER
+#           value: SA
+#         - name: SA_PASSWORD
+#           value: pass123?
+#         - name: DB_NAME
+#           value: PokemonDB
+#         - name: ACCEPT_EULA
+#           value: "Y"
+
+#       - name: pokemon-api
+#         image: oliverdj/pokemon-chart-api:version1.0
+#         ports:
+#         - containerPort: 80
+#         env:
+#         - name: "ConnectionStrings__PokemonDatabase"
+#           value: "Server=localhost, 1433; Database=PokemonDB; User ID=SA; Password=pass123?"
+
+# apiVersion: apps/v1
+# kind: Service
+
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: oliver-playground
+  labels:
+    user: oliver.jensen
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: pokemon-sql-deployment
+  namespace: oliver-playground
 spec:
   selector:
     matchLabels:
@@ -12,30 +61,86 @@ spec:
   template:
     metadata:
       labels:
-        app: pokemon
+        app: pokemon-sql
     spec:
       containers:
-      - name: pokemon-sql
-        image: oliverdj/pokemon-chart-sql:version1.0
-        ports:
-        - containerPort: 1433
-        env:
-        - name: MASTER_USER
-          value: SA
-        - name: SA_PASSWORD
-          value: pass123?
-        - name: DB_NAME
-          value: PokemonDB
-        - name: ACCEPT_EULA
-          value: "Y"
-
-      - name: pokemon-api
-        image: oliverdj/pokemon-chart-api:version1.0
-        ports:
-        - containerPort: 80
-        env:
-        - name: "ConnectionStrings__PokemonDatabase"
-          value: "Server=localhost, 1433; Database=PokemonDB; User ID=SA; Password=pass123?"
-
+        - name: pokemon-sql
+          image: oliverdj/pokemon-chart-sql:version1.0
+          env:
+            - name: MASTER_USER
+              value: SA
+            - name: SA_PASSWORD
+              value: pass123?
+            - name: DB_NAME
+              value: PokemonDB
+            - name: ACCEPT_EULA
+              value: "Y"
+---
 apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pokemon-chart-deployment
+  namespace: oliver-playground
+spec:
+  selector:
+    matchLabels:
+      app: pokemon-api
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: pokemon-api
+    spec:
+      containers:
+        - name: pokemon-api
+          image: oliverdj/pokemon-chart-api:version1.0
+          env:
+            - name: "ConnectionStrings__PokemonDatabase"
+              value: "Server=pokemon-sql-service, 9433; Database=PokemonDB; User ID=SA; Password=pass123?"
+---
+apiVersion: v1
 kind: Service
+metadata:
+  name: pokemon-sql-service
+  namespace: oliver-playground
+  labels:
+    app: pokemon-sql
+spec:
+  selector:
+    app: pokemon-sql
+  ports:
+    - protocol: TCP
+      port: 9433
+      targetPort: 1433
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pokemon-chart-service
+  namespace: oliver-playground
+  labels:
+    app: pokemon-api
+spec:
+  selector:
+    app: pokemon-api
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 80
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: pokemon-ingress
+  namespace: oliver-playground
+  annotations:
+    kubernetes.io/ingress.class: addon-http-application-routing
+spec:
+  rules:
+    - host: pokemon.e74c370edf4345d39982.westeurope.aksapp.io
+      http:
+        paths:
+          - backend:
+              serviceName: pokemon-chart-service
+              servicePort: 8080
+            path: /
