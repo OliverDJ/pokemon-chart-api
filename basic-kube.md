@@ -20,7 +20,7 @@ Print Token
 
 # Kubectl
 See current configuration
-` kubectl config current-context`
+`kubectl config current-context`
 
 See pods
 `kubectl get pods`
@@ -34,3 +34,7 @@ See services
 
 Attach to pod
 `kubectl attach <podname> -c <container>`
+
+
+Set namespace
+`kubectl config set-context --current --namespace=<insert-namespace-name-here>`

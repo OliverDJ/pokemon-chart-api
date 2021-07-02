@@ -2,21 +2,21 @@
 
 version: '2'
 services:
-  pokemon-api:
-    build: 
-      context: "./pokemon-chart-api/"
-    image: "oliverdj/pokemon-chart-api:version1.0"
-    container_name: "pokemon-api-container"
-    env_file:
-      - ./pokemon-chart-api/variables.env
-    ports:
-      - '8082:80'
+  # pokemon-api:
+  #   build: 
+  #     context: "./pokemon-chart-api/"
+  #   image: "oliverdj/pokemon-chart-api:version1.1"
+  #   container_name: "pokemon-api-container"
+  #   env_file:
+  #     - ./pokemon-chart-api/variables.env
+  #   ports:
+  #     - '8082:80'
 
   pokemon-sql:
     build:
       context: "./pokemon-chart-sql/"
     container_name: "pokemon-sql-container"
-    image: "oliverdj/pokemon-chart-sql:version1.0"
+    image: "oliverdj/pokemon-chart-sql:version1.1"
     env_file:
       - ./pokemon-chart-sql/variables.env
     ports:
